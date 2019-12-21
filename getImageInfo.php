@@ -8,37 +8,62 @@
 class Photo
 {
     private $file;
-    
-    function __construct($file)
+
+    public function __construct($file)
     {
         $this->file = $file;
     }
-    
-    function openFile()
+
+    public function openFile()
     {
         return fopen($this->file, 'a+');
     }
-    
-    function getInfo()
+
+    public function getInfo()
     {
         return exif_read_data($this->file);
     }
-    
-    function showInfo()
+
+    public function showInfo()
     {
-        foreach($this->getInfo() as $parameter => $value)
-        {
-            if(is_array($value)){
-                foreach($value as $val){
-                    echo $parameter . ' : ' . $val . '<br>';
-                }
-            } else {
-                echo $parameter . ' : ' . $value . '<br>';
+        $info = $this->getInfo();
+        $tags = $this->getTags($info);
+
+        print("<pre>" . print_r($tags, true) . "</pre>");
+    }
+
+    public function getTags($info)
+    {
+        $tag         = [];
+        $arrayobject = new ArrayObject($info);
+
+        for ($iterator = $arrayobject->getIterator(); $iterator->valid(); $iterator->next()) {
+            if (is_array($iterator->current())) {
+                $arrayValues = $this->getArrayValues($iterator->current());
             }
+
+            $tag += [$iterator->key() => $iterator->current()];
         }
+
+        if ($arrayValues) {
+            array_merge($tag, $arrayValues);
+        }
+
+        return $tag;
+    }
+
+    public function getArrayValues($iterator)
+    {
+        $tagsFromArray = [];
+
+        foreach ($iterator as $key => $val) {
+            $tagsFromArray += [$key => $val];
+        }
+
+        return $tagsFromArray;
     }
 }
 
-$path_to_photo = "IMG_0241.JPG";   //Add file
-$photo = new Photo($path_to_photo);
+$path_to_photo = "IMG_0241.JPG";                //Add file
+$photo         = new Photo($path_to_photo);
 $photo->showInfo();
