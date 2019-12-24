@@ -18,16 +18,6 @@ class PhotoResizer
         $this->desiredHeight = $desiredHeight;
     }
 
-    public function getImageName()
-    {
-        return pathinfo($this->file, PATHINFO_FILENAME);
-    }
-
-    public function getImageExtension()
-    {
-        return pathinfo($this->file, PATHINFO_EXTENSION);
-    }
-
     public function getDataTime()
     {
         return date('h-i-s', time());
