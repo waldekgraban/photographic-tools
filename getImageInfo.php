@@ -64,6 +64,6 @@ class Photo
     }
 }
 
-$path_to_photo = "IMG_0241.JPG";                //Add file
+$path_to_photo = "IMG_0241.JPG";
 $photo         = new Photo($path_to_photo);
 $photo->showInfo();
