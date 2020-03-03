@@ -1,8 +1,6 @@
 <?php
 /*
- *
  * Created by Waldemar Graban 2019
- *
  */
 
 class Photo
