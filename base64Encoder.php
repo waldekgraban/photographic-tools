@@ -29,7 +29,7 @@ class Base64Encoder
 
     public function showResult()
     {
-        echo '<img src="data:image/png;base64, '. $this->getResult() .' "/>';
+        echo '<img src="data:image/png;base64, ' . $this->getResult() . ' "/>';
     }
 }
 
