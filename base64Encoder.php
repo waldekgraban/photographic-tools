@@ -20,12 +20,13 @@ class Base64Encoder
         return base64_encode($this->getPathToFile());
     }
 
-    public function showResult()
+    public function getResult()
     {
-        echo '<img src="'. $this->encode() .'">';
+        //echo '<img src="'. $this->encode() .'">';
+        return $this->encode();
     }
 }
 
 $image = "0.jpg";   //pathToFile
 $encoder         = new Base64Encoder($image);
-$encoder->showResult();
+$encoder->getResult();
