@@ -24,11 +24,15 @@ class Base64Encoder
 
     public function getResult()
     {
-        //echo '<img src="'. $this->encode() .'">';
-        return $this->encode();
+        echo $this->encode();
+    }
+
+    public function showResult()
+    {
+        echo '<img src="data:image/png;base64, '. $this->getResult() .' "/>';
     }
 }
 
-$image   = "0.jpg"; //pathToFile
+$image   = "test.png"; //pathToFile
 $encoder = new Base64Encoder($image);
-$encoder->getResult();
+$encoder->showResult();
