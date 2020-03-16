@@ -7,11 +7,13 @@ class Base64Encoder
 {
     private $image;
 
-    public function __construct($image){
+    public function __construct($image)
+    {
         $this->image = $image;
     }
 
-    public function getPathToFile(){
+    public function getPathToFile()
+    {
         return file_get_contents($this->image);
     }
 
@@ -27,6 +29,6 @@ class Base64Encoder
     }
 }
 
-$image = "0.jpg";   //pathToFile
-$encoder         = new Base64Encoder($image);
+$image   = "0.jpg"; //pathToFile
+$encoder = new Base64Encoder($image);
 $encoder->getResult();
