@@ -33,6 +33,6 @@ class Base64Encoder
     }
 }
 
-$image   = "test.png"; //pathToFile
+$image   = "test.png";      //pathToFile
 $encoder = new Base64Encoder($image);
 $encoder->showResult();
